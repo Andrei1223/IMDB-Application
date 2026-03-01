@@ -46,7 +46,7 @@ This project uses the Gradle Wrapper, meaning you do not need to install Gradle 
 
 1. **Clone the repository:**
    ```
-   git clone [https://github.com/yourusername/imdb-clone.git](https://github.com/yourusername/imdb-clone.git)
+   git clone [https://github.com/Andrei1223/imdb-clone.git](https://github.com/Andrei1223/imdb-clone.git)
    cd imdb-clone
    ```
 
