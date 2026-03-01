@@ -180,23 +180,23 @@ public class MyGUI extends JFrame{
         gbc.anchor = GridBagConstraints.WEST;
         gbc.gridx = 0;
         gbc.gridy = 0;
-        main_frame.add(emailLabel, gbc);
+        frame.add(emailLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 0;
-        main_frame.add(emailField, gbc);
+        frame.add(emailField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        main_frame.add(passwordLabel, gbc);
+        frame.add(passwordLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 1;
-        main_frame.add(passwordField, gbc);
+        frame.add(passwordField, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
-        main_frame.add(loginButton, gbc);
+        frame.add(loginButton, gbc);
 
         User[] loggedInUser = {null};
         // Add ActionListener to the login button
@@ -212,21 +212,18 @@ public class MyGUI extends JFrame{
 
                 // If login is successful, change window color to black
                 if (user != null) {
-                    // Remove all components (text fields, labels, button)
-                    main_frame.getContentPane().removeAll();
-                    // Repaint the frame to apply changes
-                    main_frame.repaint();
+                    frame.dispose();
 
                     create_UI();
                 } else {
                     // Handle unsuccessful login (show an error message, etc.)
-                    showMessageDialog(main_frame, "Login failed. Please try again.");
+                    showMessageDialog(frame, "Login failed. Please try again.");
                 }
             }
         });
 
         // make the frame visible
-        main_frame.setVisible(true);
+        frame.setVisible(true);
 
         // return the logged-in user
         return user;
@@ -3603,12 +3600,18 @@ public class MyGUI extends JFrame{
 
     public static void exit() {
         IMDB.running = false;
-        main_frame.dispose();
+        if (main_frame != null) {
+            main_frame.dispose();
+        }
+        System.exit(0);
     }
 
     public static void logout() {
         IMDB.login = false;
-        main_frame.dispose();
+        if (main_frame != null) {
+            main_frame.dispose();
+        }
+        open_imdb_window();
     }
 
     // class to change the cursor when it is hoovering over a button

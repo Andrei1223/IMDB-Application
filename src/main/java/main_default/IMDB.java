@@ -126,11 +126,10 @@ public class IMDB {
                     if (GUI == null) {
                         GUI = new MyGUI();
 
-                        // TODO must delete
-                        user = find_user_by_username("steven_jackson_1819");
-                        login = true;
-                        MyGUI.user = user;
-                        GUI.create_UI();
+                        //user = find_user_by_username("steven_jackson_1819");
+                        //login = true;
+                        //MyGUI.user = user;
+                        //GUI.create_UI();
                     }
                     // login
                     if (login == false) {
@@ -161,6 +160,19 @@ public class IMDB {
                     case "View notifications":
                         System.out.println(user.view_notifications());
                         break;
+                    case "View productions details":
+                        // check the mode
+                        input = CLI.read_from_terminal("You want the productions in alphabetical order?: (yes/no) (y/n)");
+                        if (input.equals("yes") || input.equals("y")) {
+                            // copy the list
+                            List<Production> aux_list = new ArrayList<>(production_list);
+                            // sort the list
+                            Collections.sort(aux_list, Comparator.comparing(Production::getTitle));
+                            System.out.println(CLI.view_productions(aux_list));
+                        } else {
+                            System.out.println(CLI.view_productions(production_list));
+                        }
+                        break;
                     case "View actors details":
                         // check the mode
                         input = CLI.read_from_terminal("You want the actors in alphabetical order?: (yes/no) (y/n)");
@@ -174,6 +186,7 @@ public class IMDB {
                             System.out.println(CLI.view_actors(actor_list));
                         }
                         break;
+
                     case "Search for actor/movie/series":
                         input = CLI.read_from_terminal("What do you want to search? (actor/production) (a/p): ");
                         if (input.equals("actor") || input.equals("a")) {

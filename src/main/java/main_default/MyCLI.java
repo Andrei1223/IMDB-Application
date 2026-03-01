@@ -43,7 +43,7 @@ public class MyCLI {
 
         try {
             int inputAsInt = Integer.parseInt(input);
-            if (inputAsInt >= 1 && inputAsInt <= 11 && template_list.size() >= inputAsInt) {
+            if (inputAsInt >= 1 && inputAsInt <= 12 && template_list.size() >= inputAsInt) {
                 return inputAsInt;
             } else {
                 System.out.println("-->Error: The input is not a valid integer between 1 and " + template_list.size() + "!");
@@ -103,6 +103,7 @@ public class MyCLI {
 
         System.out.println("Welcome back! Enter your credentials!\n");
         while (!success) {
+            System.out.println("test");
             // read the username
             String email = read_from_terminal("\t\temail: ");
             Optional<User> found_user = search_by_email(user_list, email);
@@ -137,6 +138,18 @@ public class MyCLI {
         for (Object obj : actor_list) {
             Actor actor = (Actor) obj;
             str += actor.toString();
+        }
+
+        return str;
+    }
+
+    // method that returns a string with all the actors details from the system
+    public String view_productions(List<Production> production_list) {
+        String str = "These are all the productions in the system: \n";
+
+        for (Object obj : production_list) {
+            Production production = (Production) obj;
+            str += production.toString();
         }
 
         return str;

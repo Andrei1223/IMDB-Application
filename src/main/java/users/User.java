@@ -351,7 +351,7 @@ public abstract class User implements Observer {
             int integer = 1;
             // traverse all the strings from the list
             for (String notification : this.notifications) {
-                str +="\t\t" + (integer++) + notification;
+                str +="\t\t" + (integer++) + ". " + notification + "\n";
             }
         } else {
             str += "You don't have any notifications!";
